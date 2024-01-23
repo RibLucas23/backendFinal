@@ -1,34 +1,33 @@
-//importo express
+// importo express
 import express from 'express';
 // importo session
 import session from 'express-session';
-//importo handlebars
+// importo handlebars
 import handlebars from 'express-handlebars';
 
-//importo los routers
+// importo los routers
 import session_router from './routes/session.router.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 
 import loggerTest from './routes/loggerTest.router.js';
 
-//importo mongoose y mongoStore
+// importo mongoose y mongoStore
 import mongoose from 'mongoose';
 import MongoStore from 'connect-mongo';
 // importo la config de passport
 import initializePassport from './config/passport.config.js';
-//cokkies
+// cokkies
 import cookieParser from 'cookie-parser';
-//importo dotenv y lo inicio
-// import config from './config/env.config.js';
+// importo dotenv y lo inicio
 import dotenv from 'dotenv';
 dotenv.config();
 // importo cors para poder hacer fetch desde el front
 import cors from 'cors';
-//dirname
+// dirname
 import __dirname from './utils/index.js';
 
-//swagger
+// swagger
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
 const swaggerOptions = {
@@ -43,10 +42,10 @@ const swaggerOptions = {
 };
 console.log(`${__dirname}/docs/**/*.yaml`);
 const specs = swaggerJsdoc(swaggerOptions);
-//importo el manejador de errores
-//importo el logger y lo instancio mas abajo
+// importo el manejador de errores
+// importo el logger y lo instancio mas abajo
 import { errors } from './middlewares/errors/errorsWinston.js';
-//instancio el sv con express
+// instancio el sv con express
 const app = express();
 
 // Middleware CORS para todas las rutas
@@ -59,20 +58,10 @@ const corsOptions = {
 	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 	allowedHeaders: 'Content-Type, Authorization',
 };
-app.use(cors(corsOptions));
-// Enable CORS for all routes
-app.use((req, res, next) => {
-	res.header(
-		'Access-Control-Allow-Origin',
-		'https://backend-final-front-keh6.vercel.app',
-	);
-	res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	res.header('Access-Control-Allow-Credentials', 'true');
-	next();
-});
 
-//conecto con mongoDB y mongoStore
+app.use(cors(corsOptions));
+
+// conecto con mongoDB y mongoStore
 mongoose.connect(process.env.MONGO_DB);
 app.use(
 	session({
@@ -91,7 +80,7 @@ app.use(
 	}),
 );
 
-//setteo los middleWares
+// setteo los middleWares
 app.use(express.static('./src/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -101,7 +90,7 @@ app.use(passport.session());
 app.use(errors);
 app.use(cookieParser());
 
-//levanto el servidor
+// levanto el servidor
 const PORT = process.env.PORT;
 const httpServer = app.listen(PORT, () =>
 	console.log(`servidor corriendo en http://localhost:${PORT}/ `),
@@ -110,16 +99,16 @@ const httpServer = app.listen(PORT, () =>
 app.engine('handlebars', handlebars.engine());
 app.set('views', './src/views');
 app.set('view engine', 'handlebars');
-//rutas del router
+// rutas del router
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 app.use('/api/session', session_router);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
-//loggerTest
+// loggerTest
 app.use('/loggerTest', loggerTest);
 
-//productos en home solo para el desafio
+// productos en home solo para el desafío
 import passport from 'passport';
 import { configDotenv } from 'dotenv';
 
