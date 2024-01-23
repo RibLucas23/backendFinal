@@ -72,6 +72,11 @@ app.use(
 		secret: process.env.SECRET_KEY_MONGO,
 		resave: false,
 		saveUninitialized: false,
+		cookie: {
+			httpOnly: true,
+			secure: true, // Set to true if using HTTPS
+			sameSite: 'None',
+		},
 	}),
 );
 
