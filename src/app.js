@@ -76,7 +76,10 @@ app.use(cookieParser());
 //setteo cors
 app.use(
 	cors({
-		origin: 'http://localhost:3000',
+		origin: [
+			'http://localhost:3000',
+			'https://backend-final-front-keh6.vercel.app',
+		],
 		credentials: true,
 	}),
 );
