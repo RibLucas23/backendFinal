@@ -51,10 +51,7 @@ const app = express();
 
 // Middleware CORS para todas las rutas
 const corsOptions = {
-	origin: [
-		'http://localhost:3000',
-		'https://backend-final-front-keh6.vercel.app',
-	],
+	origin: ['https://backend-final-front-keh6.vercel.app'],
 	credentials: true,
 	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 	allowedHeaders: 'Content-Type, Authorization',
