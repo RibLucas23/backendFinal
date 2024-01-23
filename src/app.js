@@ -72,6 +72,11 @@ app.use(
 		secret: process.env.SECRET_KEY_MONGO,
 		resave: false,
 		saveUninitialized: false,
+		cookie: {
+			httpOnly: true,
+			sameSite: 'None', // Configura SameSite como None
+			secure: true, // Configura secure como true si estás utilizando HTTPS
+		},
 	}),
 );
 
