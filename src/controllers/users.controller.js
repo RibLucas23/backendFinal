@@ -80,6 +80,7 @@ export const login = async (req, res) => {
 		req.session.cart = req.user.cart;
 
 		console.log(req.session);
+		console.log(`la session esta ok ${req.session}`);
 		res.json({ success: true, userInfo });
 	} catch (error) {
 		logger.error('error al traer usuarios');
