@@ -5,6 +5,17 @@ import publicRoutes from '../middlewares/publicRoutes.js';
 import adminRoutes from '../middlewares/adminRoutes.js';
 import navMiddleware from '../middlewares/navMiddleware.js';
 import passport from 'passport';
+import cors from 'cors';
+
+const corsOptions = {
+	origin: [
+		'http://localhost:3000',
+		'https://backend-final-front-keh6.vercel.app',
+	],
+	credentials: true,
+	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+	allowedHeaders: 'Content-Type, Authorization',
+};
 import {
 	changePassword,
 	deleteInactiveUsersController,
@@ -45,6 +56,7 @@ session_router.get('/isNotLogged', (req, res) => {
 session_router.post(
 	'/login',
 	publicRoutes,
+	cors(corsOptions),
 	passport.authenticate('login', { failureRedirect: '/faillogin' }),
 	login,
 );
