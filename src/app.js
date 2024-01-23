@@ -73,6 +73,8 @@ app.use(passport.session());
 app.use(errors);
 app.use(cookieParser());
 
+// Middleware para manejar solicitudes OPTIONS
+app.options('*', cors());
 //setteo cors
 app.use(
 	cors({
