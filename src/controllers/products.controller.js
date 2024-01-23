@@ -19,10 +19,10 @@ export const getAllProducts = async (req, res) => {
 			query,
 		);
 		productsAll.prevLink = productsAll.hasPrevPage
-			? `http://localhost:8080/api/products/mongo?page=${productsAll.prevPage}`
+			? `https://backendfinal-production-c834.up.railway.app/api/products/mongo?page=${productsAll.prevPage}`
 			: '';
 		productsAll.nextLink = productsAll.hasNextPage
-			? `http://localhost:8080/api/products/mongo?page=${productsAll.nextPage}`
+			? `https://backendfinal-production-c834.up.railway.app/api/products/mongo?page=${productsAll.nextPage}`
 			: '';
 		productsAll.isValid = !(page <= 0 || page > productsAll.totalPages);
 		const responseDto = {

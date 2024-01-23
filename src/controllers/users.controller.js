@@ -153,7 +153,7 @@ export const resetPassword = async (req, res) => {
 		await GuardarTokenEnCookie(res, token);
 		const user = await userRepository.getuserById(userId);
 		// logger.error(user.email);
-		const textEmail = `ingresa al siguiente link para cambiar tu contraseña: http://localhost:8080/api/session/newPassword/${user._id}/check`;
+		const textEmail = `ingresa al siguiente link para cambiar tu contraseña:https://backendfinal-production-c834.up.railway.app/api/session/newPassword/${user._id}/check`;
 		await sendEmail(user.email, textEmail);
 		res.status(200).send(token);
 	} catch (error) {
