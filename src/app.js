@@ -62,17 +62,6 @@ app.use(
 		saveUninitialized: false,
 	}),
 );
-
-//setteo los middleWares
-app.use(express.static('./src/public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-initializePassport();
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(errors);
-app.use(cookieParser());
-
 // Middleware para manejar solicitudes OPTIONS
 // app.options('*', cors());
 //setteo cors
@@ -96,6 +85,17 @@ app.use(cors(corsOptions));
 // 		credentials: true,
 // 	}),
 // );
+
+//setteo los middleWares
+app.use(express.static('./src/public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(errors);
+app.use(cookieParser());
+
 //levanto el servidor
 const PORT = process.env.PORT;
 const httpServer = app.listen(PORT, () =>
