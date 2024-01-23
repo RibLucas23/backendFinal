@@ -65,17 +65,19 @@ app.use(
 // Middleware para manejar solicitudes OPTIONS
 // app.options('*', cors());
 //setteo cors
-const corsOptions = {
-	origin: [
-		'http://localhost:3000',
-		'https://backend-final-front-keh6.vercel.app',
-	],
-	credentials: true,
-	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-	allowedHeaders: 'Content-Type, Authorization',
-};
+app.use(cors()); // Permitirá todas las rutas
 
-app.use(cors(corsOptions));
+// Configura CORS específicamente para las rutas de interés
+app.options(
+	'*',
+	cors({
+		origin: [
+			'http://localhost:3000',
+			'https://backend-final-front-keh6.vercel.app',
+		],
+		credentials: true,
+	}),
+);
 // app.use(
 // 	cors({
 // 		origin: [
