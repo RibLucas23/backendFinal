@@ -50,24 +50,16 @@ import { errors } from './middlewares/errors/errorsWinston.js';
 const app = express();
 
 // Middleware CORS para todas las rutas
-app.use(
-	cors({
-		origin: '*',
-		credentials: true,
-		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-		allowedHeaders: 'Content-Type, Authorization',
-	}),
-);
-// const corsOptions = {
-// 	origin: [
-// 		'http://localhost:3000',
-// 		'https://backend-final-front-keh6.vercel.app',
-// 	],
-// 	credentials: true,
-// 	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-// 	allowedHeaders: 'Content-Type, Authorization',
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+	origin: [
+		'http://localhost:3000',
+		'https://backend-final-front-keh6.vercel.app',
+	],
+	credentials: true,
+	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+	allowedHeaders: 'Content-Type, Authorization',
+};
+app.use(cors(corsOptions));
 
 //conecto con mongoDB y mongoStore
 mongoose.connect(process.env.MONGO_DB);
