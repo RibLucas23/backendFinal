@@ -60,6 +60,17 @@ const corsOptions = {
 	allowedHeaders: 'Content-Type, Authorization',
 };
 app.use(cors(corsOptions));
+// Enable CORS for all routes
+app.use((req, res, next) => {
+	res.header(
+		'Access-Control-Allow-Origin',
+		'https://backend-final-front-keh6.vercel.app',
+	);
+	res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	res.header('Access-Control-Allow-Credentials', 'true');
+	next();
+});
 
 //conecto con mongoDB y mongoStore
 mongoose.connect(process.env.MONGO_DB);
