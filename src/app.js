@@ -74,17 +74,28 @@ app.use(errors);
 app.use(cookieParser());
 
 // Middleware para manejar solicitudes OPTIONS
-app.options('*', cors());
+// app.options('*', cors());
 //setteo cors
-app.use(
-	cors({
-		origin: [
-			'http://localhost:3000',
-			'https://backend-final-front-keh6.vercel.app',
-		],
-		credentials: true,
-	}),
-);
+const corsOptions = {
+	origin: [
+		'http://localhost:3000',
+		'https://backend-final-front-keh6.vercel.app',
+	],
+	credentials: true,
+	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+	allowedHeaders: 'Content-Type, Authorization',
+};
+
+app.use(cors(corsOptions));
+// app.use(
+// 	cors({
+// 		origin: [
+// 			'http://localhost:3000',
+// 			'https://backend-final-front-keh6.vercel.app',
+// 		],
+// 		credentials: true,
+// 	}),
+// );
 //levanto el servidor
 const PORT = process.env.PORT;
 const httpServer = app.listen(PORT, () =>
