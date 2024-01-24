@@ -41,8 +41,8 @@ export const getAllProducts = async (req, res) => {
 			nextLink: productsAll.nextLink,
 			isValid: productsAll.isValid,
 		};
-
-		res.status(200).json({
+		console.log(req.session);
+		res.status(200).send({
 			responseDto,
 			userUser,
 			userRol,
