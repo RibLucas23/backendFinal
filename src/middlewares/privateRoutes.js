@@ -1,7 +1,6 @@
 const privatesRoutes = async (req, res, next) => {
 	try {
 		const allowedRoles = ['usuario', 'admin', 'premium'];
-
 		console.log('req.session:');
 		console.log(req.session);
 		if (!allowedRoles.includes(req.session.rol)) {

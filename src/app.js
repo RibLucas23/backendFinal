@@ -59,12 +59,6 @@ const app = express();
 // 	allowedHeaders: 'Content-Type, Authorization',
 // };
 // app.use(cors(corsOptions));
-app.use(
-	cors({
-		origin: 'https://backend-final-front-keh6.vercel.app', // Reemplaza con la URL de tu frontend
-		credentials: true,
-	}),
-);
 
 // conecto con mongoDB y mongoStore
 mongoose.connect(process.env.MONGO_DB);
@@ -95,6 +89,26 @@ app.use(passport.session());
 app.use(errors);
 app.use(cookieParser());
 
+app.use(
+	cors({
+		origin: 'https://backend-final-front-keh6.vercel.app', // Reemplaza con la URL de tu frontend
+		credentials: true,
+	}),
+);
+
+app.use((req, res, next) => {
+	res.header(
+		'Access-Control-Allow-Origin',
+		'https://backend-final-front-keh6.vercel.app',
+	);
+	res.header(
+		'Access-Control-Allow-Methods',
+		'GET, POST, OPTIONS, PUT, DELETE',
+	);
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	res.header('Access-Control-Allow-Credentials', 'true');
+	next();
+});
 // levanto el servidor
 const PORT = process.env.PORT;
 const httpServer = app.listen(PORT, () =>
