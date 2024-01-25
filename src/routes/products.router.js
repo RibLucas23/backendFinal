@@ -14,7 +14,7 @@ import premiumValidator from '../middlewares/premiumValidator.js';
 
 //=======================================__MONGO__=============================================
 //GET ALL
-productsRouter.get('/mongo', getAllProducts);
+productsRouter.get('/mongo', privatesRoutes, getAllProducts);
 //GENERATE FAKER PRODUCTS
 productsRouter.get('/mongo/mockingproducts', adminRoutes, mockingProducts);
 //CREATE PRODUCT
