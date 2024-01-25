@@ -14,3 +14,5 @@ const privatesRoutes = async (req, res, next) => {
 		res.status(500).json({ success: false, error: 'Error en el servidor' });
 	}
 };
+
+export default privatesRoutes;
