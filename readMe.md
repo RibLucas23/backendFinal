@@ -1,3 +1,21 @@
+# Link deploy Backend
+
+https://backendfinal-production-c834.up.railway.app
+
+# Link deploy Frontend
+
+https://backend-final-front-keh6.vercel.app
+
+# Link repositorios
+
+https://github.com/RibLucas23/backendFinal
+
+https://github.com/RibLucas23/backendFinal-Front
+
+---
+
+# IMPORTANTE LEER!
+
 Cuando hago el console.log de req.session me devuelve bien la cookie con todos los datos del usuario
 
 ![Alt text](image.png)
@@ -24,4 +42,8 @@ pero cuando hago el login desde el deploy del backend me guarda perfecto la cook
 
 ![Alt text](image-5.png)
 
-Asi que porfavor le pido si puede hacer "npm run dev" en su pc para poder correrlo de localhost para tener las vistas
+Estuve las ultimas semanas intentando arreglar ese problema pero no encuentro solucion.
+
+Asi que porfavor le pido si puede hacer "npm run dev" en su pc para poder correrlo de localhost para tener las vistas.
+
+Si usted profe descubre el error, le agradeceria muchisimo que me lo diga asi puedo subir mi trabajo a mi porfolio, muchas gracias profe, explico muy bien durante el curso!
