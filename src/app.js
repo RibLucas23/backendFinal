@@ -61,7 +61,10 @@ const app = express();
 // app.use(cors(corsOptions));
 app.use(
 	cors({
-		origin: 'https://backend-final-front-keh6.vercel.app', // Reemplaza con la URL de tu frontend
+		origin: [
+			'http://localhost:3000',
+			'https://backend-final-front-keh6.vercel.app',
+		],
 		credentials: true,
 	}),
 );
