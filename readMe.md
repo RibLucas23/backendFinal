@@ -23,3 +23,5 @@ osea que acceso a la DB desde el front tengo
 pero cuando hago el login desde el deploy del backend me guarda perfecto la cookie de la session con todos los datos del usuario
 
 ![Alt text](image-5.png)
+
+Asi que porfavor le pido si puede hacer "npm run dev" en su pc para poder correrlo de localhost para tener las vistas
